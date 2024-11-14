@@ -1,0 +1,14 @@
+zerops:
+  - setup: web
+    build:
+      base: bun@latest
+      buildCommands:
+        - bun install --no-cache
+        - bun run build
+      deployFiles:
+        - dist/apps/app
+    run:
+      ports:
+        - port: 3000
+          httpSupport: true
+      start: bun index.js
