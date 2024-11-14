@@ -6,9 +6,9 @@ zerops:
         - bun install --no-cache
         - bun run build
       deployFiles:
-        - dist/apps/app
+        - dist/apps/app/~
     run:
       ports:
         - port: 3000
           httpSupport: true
-      start: bun index.js
+      start: bun run analog/server/index.mjs
