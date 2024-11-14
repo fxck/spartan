@@ -2,6 +2,7 @@ zerops:
   - setup: web
     build:
       base: nodejs@22
+      os: ubuntu
       envVariables:
         CI: true
         NODE_OPTIONS: --max-old-space-size=8192
