@@ -1,23 +1,17 @@
 zerops:
   - setup: web
     build:
-      base: bun@latest
+      base: nodejs@22
       envVariables:
         CI: true
-      prepareCommands:
-        - echo "Upgrading bun to 1.1.35"
-        - bun upgrade
       buildCommands:
-        - bun install --no-cache
-        - bun run build
+        - pnpm install
+        - pnpm run build
       deployFiles:
-        - dist/apps/app
+        - dist/apps/app/~
     run:
-      base: bun@latest
-      prepareCommands:
-        - echo "Upgrading bun to 1.1.35"
-        - bun upgrade
+      base: nodejs@22
       ports:
         - port: 3000
           httpSupport: true
-      start: bun index.js
+      start: node analog/server/index.mjs
