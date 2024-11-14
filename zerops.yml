@@ -4,6 +4,7 @@ zerops:
       base: nodejs@22
       envVariables:
         CI: true
+        NODE_OPTIONS: --max-old-space-size=8192
       buildCommands:
         - pnpm install
         - pnpm run build
