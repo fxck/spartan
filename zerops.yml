@@ -11,12 +11,13 @@ zerops:
         - node_modules
         - dist
         - apps/app/drizzle
+        - apps/app/drizzle.config.ts
     run:
       base: nodejs@22
       envVariables:
         DATABASE_URL: ${db_connectionString}
       initCommands:
-        - zsc execOnce $appVersionId -- npx drizzle-kit migrate --config=./apps/app/drizzle/drizzle.config.ts
+        - zsc execOnce $appVersionId -- npx drizzle-kit migrate --config=./apps/app/drizzle.config.ts
       ports:
         - port: 3000
           httpSupport: true
