@@ -10,7 +10,7 @@ zerops:
       deployFiles:
         - node_modules
         - dist
-        - apps/app/drizzle
+        - apps/app/drizzle/
         - apps/app/drizzle.config.ts
     run:
       base: nodejs@22
