@@ -13,7 +13,7 @@ zerops:
         - apps/app/drizzle
     run:
       base: nodejs@22
-			prepareCommands:
+      prepareCommands:
         - sudo npm i -g drizzle-kit
       envVariables:
         DATABASE_URL: ${db_connectionString}
