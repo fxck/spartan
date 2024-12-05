@@ -11,7 +11,7 @@ zerops:
         - node_modules
         - dist
         - apps/app/drizzle.config.ts
-				- apps/app/drizzle
+        - apps/app/drizzle
     run:
       base: nodejs@22
       envVariables:
