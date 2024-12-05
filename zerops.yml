@@ -10,8 +10,8 @@ zerops:
       deployFiles:
         - node_modules
         - dist
-        - apps/app/drizzle/
         - apps/app/drizzle.config.ts
+				- apps/app/drizzle
     run:
       base: nodejs@22
       envVariables:
@@ -22,4 +22,3 @@ zerops:
         - port: 3000
           httpSupport: true
       start: node dist/apps/app/analog/server/index.mjs
-#
