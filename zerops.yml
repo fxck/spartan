@@ -8,7 +8,6 @@ zerops:
         - pnpm i
         - npx nx build app --prod
       deployFiles:
-        - node_modules
         - dist
         - apps/app/drizzle.config.ts
         - apps/app/drizzle
