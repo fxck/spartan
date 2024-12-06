@@ -9,12 +9,13 @@ zerops:
         - npx nx build app --prod
       deployFiles:
         - dist/apps/app/analog/~
+        - tools/scripts/~drizzle-migrate.config.js
     run:
       base: nodejs@22
       envVariables:
         DATABASE_URL: ${db_connectionString}/${db_dbName}
       initCommands:
-        - zsc execOnce $appVersionId -- npx drizzle-kit migrate --dialect=postgresql --url=$DATABASE_URL
+        - zsc execOnce $appVersionId -- npx drizzle-kit migrate --config=drizzle-migrate.config.js
       ports:
         - port: 3000
           httpSupport: true
