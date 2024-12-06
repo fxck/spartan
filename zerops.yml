@@ -5,23 +5,29 @@ zerops:
       envVariables:
         NODE_OPTIONS: --max-old-space-size=8192
       buildCommands:
+        # install dev dependencies & build app
         - pnpm i
         - npx nx build app --prod
+        # clean up dev dependencies
+        # (mv faster than rm)
         - |
           mv node_modules _node_modules
           mv package.json _package.json
           mv pnpm-lock.yaml _pnpm-lock.yaml
+        # install runtime migration dependencies
         - pnpm add drizzle-kit drizzle-orm postgres
       deployFiles:
         - node_modules
         - dist/apps/app/analog/~
         - tools/scripts/~drizzle-migrate.config.ts
-        - apps/app/drizzle/~
+        - apps/app/drizzle~
     run:
       base: nodejs@22
       envVariables:
         DATABASE_URL: ${db_connectionString}/${db_dbName}
       initCommands:
+        - ls -la
+        - cd meta && ls -la
         - zsc execOnce $appVersionId -- drizzle-kit migrate --config=drizzle-migrate.config.ts
       ports:
         - port: 3000
