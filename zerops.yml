@@ -20,7 +20,7 @@ zerops:
         - node_modules
         - dist/apps/app/analog/~
         - tools/scripts/~drizzle-migrate.config.ts
-        - apps/app/drizzle~
+        - apps/app/~drizzle
     run:
       base: nodejs@22
       envVariables:
