@@ -7,19 +7,18 @@ zerops:
       buildCommands:
         - pnpm i
         - npx nx build app --prod
+        - rm -rf node_modules
+        - pnpm add drizzle-kit
       deployFiles:
+        - node_modules
         - dist/apps/app/analog/~
         - tools/scripts/~drizzle-migrate.config.ts
     run:
       base: nodejs@22
-      prepareCommands:
-        - |
-          cd /var/www
-          npm i drizzle-kit
       envVariables:
         DATABASE_URL: ${db_connectionString}/${db_dbName}
       initCommands:
-        - zsc execOnce $appVersionId -- npx drizzle-kit migrate --config=drizzle-migrate.config.ts
+        - zsc execOnce $appVersionId -- drizzle-kit migrate --config=drizzle-migrate.config.ts
       ports:
         - port: 3000
           httpSupport: true
